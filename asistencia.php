@@ -6,20 +6,22 @@ require_once("leftmenu.php");
 //aqui activo es para ver si esta en la empresa
 $activo = 1;
 $consulta = "SELECT * FROM empleados WHERE disponible = '$activo'";
-$resultados = $con -> query($consulta);
-$activos = $resultados -> fetch_all();
+$resultados = $con->query($consulta);
+$activos = $resultados->fetch_all();
 
 //aqui nos ayuda para imprimir los activos osea los que estan dentro de 
 //la empresa
-function iterarActivos($activos){
+function iterarActivos($activos)
+{
     $limite = count($activos);
-    for ($i=0; $i < $limite; $i++) { 
-    imprimirActivo($i+1,$activos[$i][0],$activos[$i][1],$activos[$i][5]);  
-    } 
+    for ($i = 0; $i < $limite; $i++) {
+        imprimirActivo($i + 1, $activos[$i][0], $activos[$i][1], $activos[$i][5]);
+    }
 }
 
 //aqui ya se imprime
-function imprimirActivo($numero,$codigo,$nombre,$cargo){
+function imprimirActivo($numero, $codigo, $nombre, $cargo)
+{
     echo <<<_ACTIVO
         <tr>
             <td>$numero</td>
@@ -33,7 +35,7 @@ function imprimirActivo($numero,$codigo,$nombre,$cargo){
 //aqui ya es lo que se le muestra al usuario
 ?>
 
-<div class="container">
+<div class="container content-wrapper">
     <div>
         <h1 class="h4 mb-4 mt-5">Empleados activos actualmente</h1>
         <hr class="bg-dark" style="height:2px; width:100%; border-width:0; color:#343a40; background-color:#343a40">
@@ -52,7 +54,7 @@ function imprimirActivo($numero,$codigo,$nombre,$cargo){
                 </tr>
                 <?php iterarActivos($activos); ?>
             </table>
-        </div>    
+        </div>
     </div>
 </div>
 
@@ -60,11 +62,11 @@ function imprimirActivo($numero,$codigo,$nombre,$cargo){
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <script>
     //al darle refrescar hace la funcion otra ves
-    $("#refrescar").click(function(){
+    $("#refrescar").click(function() {
 
         location.reload()
     })
-
 </script>
 </body>
+
 </html>

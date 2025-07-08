@@ -1,11 +1,11 @@
 <?php
 //para marcar asistencia
 include("conexion.php");
-date_default_timezone_set('America/El_Salvador');
+date_default_timezone_set('America/Caracas');
 $codigo = $_POST['codigo']; //empleado
 $marca = $_POST['marca']; //puede ser entrada o salida E ó S
 $fecha=date('Y-m-d');
-$hora=date("H:i:s");
+$hora=date("h:i:s A");
 $hnull=NULL;
 $sql0 = mysqli_query($con, "SELECT * FROM empleados WHERE codigo='$codigo'");
 //consultar si existe empleado

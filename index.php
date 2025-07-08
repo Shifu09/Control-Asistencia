@@ -3,8 +3,7 @@
 //y el login si es administrador
 include("conexion.php");
 include("login.php");
-
-date_default_timezone_set('America/El_Salvador');
+date_default_timezone_set('America/Caracas');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -45,9 +44,9 @@ date_default_timezone_set('America/El_Salvador');
                     //aqui mostramos la fecha 
                     //y la hora
                     $fecha_actual=date('d-m-Y');
-                    $hora_eval = date('H:i:s',strtotime("12 PM"));
+                    $hora_eval = date("h:i:s");
                     //aqui se chekea la entrada automaticamente
-                    if($hora_eval < date('H:i:s')){
+                    if($hora_eval < date("h:i:s A")){
                         $checked='checked';
                             $checked2='';
                         //aqui la salida
