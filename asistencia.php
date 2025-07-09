@@ -1,7 +1,7 @@
 <?php
 //aqui se hace los que estan adentro de la empresa
-require_once("head.php");
-require_once("leftmenu.php");
+include("head.php");
+include("leftmenu.php");
 
 //aqui activo es para ver si esta en la empresa
 $activo = 1;
@@ -67,6 +67,7 @@ function imprimirActivo($numero, $codigo, $nombre, $cargo)
         location.reload()
     })
 </script>
+<?php include_once("foot.php"); ?>
 </body>
 
 </html>
