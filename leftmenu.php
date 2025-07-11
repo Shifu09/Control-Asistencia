@@ -32,7 +32,7 @@
   .nav-logo {
     width: 30px;
     height: 30px;
-    margin: 3px;
+    margin: 10px;
   }
 
   html {
