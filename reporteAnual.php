@@ -5,12 +5,11 @@ include("leftmenu.php");
 include("conexion.php");
 include("funciones.php");
 
-$fechai=date('d-m-Y');
-$fechaf=date('d-m-Y');
+$fechai = date('d-m-Y');
+$fechaf = date('d-m-Y');
 $sql = mysqli_query($con, "SELECT * FROM empleados");
 
-if(mysqli_num_rows($sql) >0){
-
+if (mysqli_num_rows($sql) > 0) {
 }
 ?>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css" rel="stylesheet">
@@ -18,21 +17,21 @@ if(mysqli_num_rows($sql) >0){
 	<div class='row'>
 		<h3>Reporte por Rango de Fechas</h3>
 
-		<!--input type='hidden' value='<?php echo $codigo?>' id='codigo' name='codigo' /-->
+		<!--input type='hidden' value='<?php echo $codigo ?>' id='codigo' name='codigo' /-->
 		<!--aqui le pedimos las fechas-->
 		<div class="col-sm-4">
 			<div class="form-control">
 				<label class="col-sm-4 control-label">Fecha de inicio</label>
 				<div class="col-sm-4">
-					<input type="text" name="fechai" id="fechai"  class="input-group date form-control" date="" data-date-format="dd-mm-yyyy" placeholder="00-00-0000" value="<?php echo $fechai?>" required>
+					<input type="text" name="fechai" id="fechai" class="input-group date form-control" date="" data-date-format="dd-mm-yyyy" placeholder="00-00-0000" value="<?php echo $fechai ?>" required>
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-4">
 			<div class="form-control">
-				<label class="col-sm-4 control-label">Fecha  Fin</label>
+				<label class="col-sm-4 control-label">Fecha Fin</label>
 				<div class="col-sm-4">
-					<input type="text" name="fechaf" id="fechaf"  class="input-group date form-control" date="" data-date-format="dd-mm-yyyy" placeholder="00-00-0000" value="<?php echo $fechaf?>" required>
+					<input type="text" name="fechaf" id="fechaf" class="input-group date form-control" date="" data-date-format="dd-mm-yyyy" placeholder="00-00-0000" value="<?php echo $fechaf ?>" required>
 				</div>
 			</div>
 		</div>
@@ -69,7 +68,7 @@ if(mysqli_num_rows($sql) >0){
 		</div>
 	</div>
 </div>
-<?php include_once ("foot.php");?>
+<?php include_once("foot.php"); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>

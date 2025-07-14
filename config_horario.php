@@ -1,155 +1,159 @@
 <?php
 //aqui se hace la configuracion del horario
 
-function inicio(){
+function inicio()
+{
 	include_once "conexion.php";
-		include("head.php");
-		include("leftmenu.php");
-		//nos traemos todo de horario
-		$sql0="SELECT  * FROM horario";
-		$res0 = mysqli_query($con, $sql0);
+	include("head.php");
+	include("leftmenu.php");
+	//nos traemos todo de horario
+	$sql0 = "SELECT  * FROM horario";
+	$res0 = mysqli_query($con, $sql0);
 
-		if(mysqli_num_rows($res0) >0){
-			$row0 = mysqli_fetch_assoc($res0);
-		}
-	?>
+	if (mysqli_num_rows($res0) > 0) {
+		$row0 = mysqli_fetch_assoc($res0);
+	}
+?>
 	<!--aqui es lo que se le muestra al usuario-->
 	<div class="tab-content flex-grow-1 ms-3" id="v-tabs-tabContent">
-		<div  class="container-fluid my-5">
+		<div class="container-fluid my-5">
 			<h3>Configurar Horarios laborales</h3>
 			<form id="horarios">
 				<input type="hidden" id='process' name='process' value="guardar" />
 				<table>
 					<tr>
-						<td>Dia	</td>
-						<td>Hora entrada	</td>
-						<td>Minutos entrada	</td>
-						<td>Hora  Salida	</td>
-						<td>Minutos Salida	</td>
-
+						<td>Dia</td>
+						<td>Hora entrada</td>
+						<td>Minutos entrada</td>
+						<td>Hora salida</td>
+						<td>Minutos salida</td>
 					</tr>
 					<?php
-					//aqui se le asigna a las siguientes variables los datos
-					//traidos de la base 
-					list($h_ent,$m_ent,$s_ent)=explode(':',$row0['hora_e_sem']);
-					list($h_sal,$m_sal,$s_sal)=explode(':',$row0['hora_s_sem']);
-					list($h_ents,$m_ents,$s_ents)=explode(':',$row0['hora_e_fd']);
-					list($h_sals,$m_sals,$s_sals)=explode(':',$row0['hora_s_fd']);
-					//luego se imprime al usuario
+					// Lunes a Jueves
+					$hora_e_sem = isset($row0['hora_e_sem']) ? $row0['hora_e_sem'] : '08:00:00';
+					$hora_s_sem = isset($row0['hora_s_sem']) ? $row0['hora_s_sem'] : '16:00:00';
+					list($h_e_sem, $m_e_sem, $s_e_sem) = explode(':', $hora_e_sem);
+					list($h_s_sem, $m_s_sem, $s_s_sem) = explode(':', $hora_s_sem);
+					// Viernes
+					$hora_e_vie = isset($row0['hora_e_vie']) ? $row0['hora_e_vie'] : '08:00:00';
+					$hora_s_vie = isset($row0['hora_s_vie']) ? $row0['hora_s_vie'] : '15:00:00';
+					list($h_e_vie, $m_e_vie, $s_e_vie) = explode(':', $hora_e_vie);
+					list($h_s_vie, $m_s_vie, $s_s_vie) = explode(':', $hora_s_vie);
+					// Sábado
+					$hora_e_fd = isset($row0['hora_e_fd']) ? $row0['hora_e_fd'] : '08:00:00';
+					$hora_s_fd = isset($row0['hora_s_fd']) ? $row0['hora_s_fd'] : '12:00:00';
+					list($h_e_fd, $m_e_fd, $s_e_fd) = explode(':', $hora_e_fd);
+					list($h_s_fd, $m_s_fd, $s_s_fd) = explode(':', $hora_s_fd);
+
+					// Mostrar filas
 					echo "<tr>
-						<td class='dia'>Lunes a Viernes</td>
-						<td><input type='text'  id='hora_ent1' name='hora_ent1' class='datas form-control input-md integer_positive' min='0' max='23' value='".$h_ent."'></td>
-						<td><input type='text'  id='min_ent1' name='min_ent1'  class='datas form-control input-md integer_positive'  min='0' max='60' value='".$m_ent."'></td>
-						<td><input type='text'  id='hora_sal1' name='hora_sal1'   class='datas form-control input-md integer_positive'  min='0' max='23'  value='".$h_sal."'></td>
-						<td><input type='text'  id='min_sal1' name='min_sal1'  class='datas form-control input-md integer_positive'  min='0' max='60' value='".$m_sal."'></td>
-						</tr>";
-					echo"<tr>
-						<td class='dia'>Sabado</td>
-						<td><input type='text'  id='hora_ent2' name='hora_ent2' class='datas form-control input-md integer_positive' min='0' max='23' value='".$h_ents."'></td>
-						<td><input type='text'  id='min_ent2' name='min_ent2'  class='datas form-control input-md integer_positive'  min='0' max='60' value='".$m_ents."'></td>
-						<td><input type='text'  id='hora_sal2' name='hora_sal2'   class='datas form-control input-md integer_positive'  min='0' max='23'  value='".$h_sals."'></td>
-						<td><input type='text'  id='min_sal2' name='min_sal2'  class='datas form-control input-md integer_positive'  min='0' max='60' value='".$m_sals."'></td>
-						</tr>";
+						<td class='dia'>Lunes a Jueves</td>
+						<td><input type='number' name='hora_e_sem_h' min='0' max='23' class='datas form-control input-md integer_positive' value='$h_e_sem'></td>
+						<td><input type='number' name='hora_e_sem_m' min='0' max='59' class='datas form-control input-md integer_positive' value='$m_e_sem'></td>
+						<td><input type='number' name='hora_s_sem_h' min='0' max='23' class='datas form-control input-md integer_positive' value='$h_s_sem'></td>
+						<td><input type='number' name='hora_s_sem_m' min='0' max='59' class='datas form-control input-md integer_positive' value='$m_s_sem'></td>
+					</tr>";
+					echo "<tr>
+						<td class='dia'>Viernes</td>
+						<td><input type='number' name='hora_e_vie_h' min='0' max='23' class='datas form-control input-md integer_positive' value='$h_e_vie'></td>
+						<td><input type='number' name='hora_e_vie_m' min='0' max='59' class='datas form-control input-md integer_positive' value='$m_e_vie'></td>
+						<td><input type='number' name='hora_s_vie_h' min='0' max='23' class='datas form-control input-md integer_positive' value='$h_s_vie'></td>
+						<td><input type='number' name='hora_s_vie_m' min='0' max='59' class='datas form-control input-md integer_positive' value='$m_s_vie'></td>
+					</tr>";
+					echo "<tr>
+						<td class='dia'>Sábado</td>
+						<td><input type='number' name='hora_e_fd_h' min='0' max='23' class='datas form-control input-md integer_positive' value='$h_e_fd'></td>
+						<td><input type='number' name='hora_e_fd_m' min='0' max='59' class='datas form-control input-md integer_positive' value='$m_e_fd'></td>
+						<td><input type='number' name='hora_s_fd_h' min='0' max='23' class='datas form-control input-md integer_positive' value='$h_s_fd'></td>
+						<td><input type='number' name='hora_s_fd_m' min='0' max='59' class='datas form-control input-md integer_positive' value='$m_s_fd'></td>
+					</tr>";
 					?>
 				</table>
 		</div>
-		<div  class="container-fluid my-5">
+		<div class="container-fluid my-5">
 			<div class="justify-content-center ">
 				<div class="border border-light p-3 mb-4">
 					<div class="text-center">
-					<!--aqui dejamos el boton de guardar los datos si en caso los modifica-->
-						<input type="submit" name="guardar2" id="guardar2"class="btn btn-outline-primary" value="Guardar datos">
+						<!--aqui dejamos el boton de guardar los datos si en caso los modifica-->
+						<input type="submit" name="guardar2" id="guardar2" class="btn btn-outline-primary" value="Guardar datos">
 						<a type="button" href="reporteEmp.php" class="btn btn-outline-danger">Cancelar</a>
 					</div>
 				</div>
 			</div>
 		</div>
-			</form>
+		</form>
 	</div>
-	<?php include_once ("foot.php");?>
+	<?php include_once("foot.php"); ?>
 	<script src="js/config_horario.js"></script>
-	<?php
+<?php
 }
 //aqui es cuando de click en guardar
-function guardar(){
+function guardar()
+{
 	include "conexion.php";
-	//variable para validar si hay espacios en blanco
-	$validar=true;
-	//si la hora de entrada esta vacia
-	$hora_ent1=$_POST['hora_ent1'];
-	if ($hora_ent1=='') {
-		$validar=false;
-	}
-	//si el miuto de entrada esta vacio
-	$min_ent1=$_POST['min_ent1'];
-	if ($min_ent1=='') {
-		$validar=false;
-	}
-	//si la hora de salida esta vacia
-	$hora_sal1=$_POST['hora_sal1'];
-	if ($hora_sal1=='') {
-		$validar=false;
-	}
-	//si el minuto de salida esta vacia
-	$min_sal1=$_POST['min_sal1'];
-	if ($min_sal1=='') {
-		$validar=false;
-	}
-	//si la hora de entrada del fin de esta vacia
-	$hora_ent2=$_POST['hora_ent2'];
-	if ($hora_ent2=='') {
-		$validar=false;
-	}
-	//si el minti;p de entrada del fin de semana esta vacia
-	$min_ent2=$_POST['min_ent2'];
-	if ($min_ent2=='') {
-		$validar=false;
-	}
-	//si la hora de salida del fin de semana esta vacia
-	$hora_sal2=$_POST['hora_sal2'];
-	if ($hora_sal2=='') {
-		$validar=false;
-	}
-	//si el minuto de salida del fin de semana esta vacia
-	$min_sal2=$_POST['min_sal2'];
-	if ($min_sal2=='') {
-		$validar=false;
-	}
-	$hesem=$hora_ent1.":".$min_ent1.":00";
-	$hssem=$hora_sal1.":".$min_sal1.":00";
-	$hefd=$hora_ent2.":".$min_ent2.":00";
-	$hsfd=$hora_sal2.":".$min_sal2.":00";
-	//si no hay espacios en blanco se modifica en la tabla horario
-	$q="UPDATE  horario
-		SET hora_e_sem='$hesem',
-		hora_s_sem=	'$hssem',
-		hora_e_fd='$hefd',
-		hora_s_fd='$hsfd'";
-	if ($validar==false) {
-		//aqui valida si hay algun espacio vacio
-		$datos["mensaje"]="revise que las casillas de horario no esten vacias!";
-	}else{
-		//si no hay vacio se hace esto
-	$update = mysqli_query($con,$q ) or die(mysqli_error());
+	$validar = true;
+	// Lunes a Jueves
+	$h_e_sem = isset($_POST['hora_e_sem_h']) ? $_POST['hora_e_sem_h'] : '';
+	$m_e_sem = isset($_POST['hora_e_sem_m']) ? $_POST['hora_e_sem_m'] : '';
+	$h_s_sem = isset($_POST['hora_s_sem_h']) ? $_POST['hora_s_sem_h'] : '';
+	$m_s_sem = isset($_POST['hora_s_sem_m']) ? $_POST['hora_s_sem_m'] : '';
+	// Viernes
+	$h_e_vie = isset($_POST['hora_e_vie_h']) ? $_POST['hora_e_vie_h'] : '';
+	$m_e_vie = isset($_POST['hora_e_vie_m']) ? $_POST['hora_e_vie_m'] : '';
+	$h_s_vie = isset($_POST['hora_s_vie_h']) ? $_POST['hora_s_vie_h'] : '';
+	$m_s_vie = isset($_POST['hora_s_vie_m']) ? $_POST['hora_s_vie_m'] : '';
+	// Sábado
+	$h_e_fd = isset($_POST['hora_e_fd_h']) ? $_POST['hora_e_fd_h'] : '';
+	$m_e_fd = isset($_POST['hora_e_fd_m']) ? $_POST['hora_e_fd_m'] : '';
+	$h_s_fd = isset($_POST['hora_s_fd_h']) ? $_POST['hora_s_fd_h'] : '';
+	$m_s_fd = isset($_POST['hora_s_fd_m']) ? $_POST['hora_s_fd_m'] : '';
 
-	if($update){
-		$datos["mensaje"]="Horario Actualizado";
-	}else {
-		$datos["mensaje"]="Horario no pudo ser Actualizado!";
-	}}
+	if (
+		$h_e_sem === '' || $m_e_sem === '' || $h_s_sem === '' || $m_s_sem === '' ||
+		$h_e_vie === '' || $m_e_vie === '' || $h_s_vie === '' || $m_s_vie === '' ||
+		$h_e_fd === '' || $m_e_fd === '' || $h_s_fd === '' || $m_s_fd === ''
+	) {
+		$validar = false;
+	}
+
+	$hora_e_sem = sprintf('%02d:%02d:00', $h_e_sem, $m_e_sem);
+	$hora_s_sem = sprintf('%02d:%02d:00', $h_s_sem, $m_s_sem);
+	$hora_e_vie = sprintf('%02d:%02d:00', $h_e_vie, $m_e_vie);
+	$hora_s_vie = sprintf('%02d:%02d:00', $h_s_vie, $m_s_vie);
+	$hora_e_fd = sprintf('%02d:%02d:00', $h_e_fd, $m_e_fd);
+	$hora_s_fd = sprintf('%02d:%02d:00', $h_s_fd, $m_s_fd);
+
+	$q = "UPDATE horario SET 
+		hora_e_sem='$hora_e_sem',
+		hora_s_sem='$hora_s_sem',
+		hora_e_vie='$hora_e_vie',
+		hora_s_vie='$hora_s_vie',
+		hora_e_fd='$hora_e_fd',
+		hora_s_fd='$hora_s_fd'";
+
+	if ($validar == false) {
+		$datos["mensaje"] = "¡Revise que las casillas de horario no estén vacías!";
+	} else {
+		$update = mysqli_query($con, $q) or die(mysqli_error());
+		if ($update) {
+			$datos["mensaje"] = "Horario Actualizado";
+		} else {
+			$datos["mensaje"] = "Horario no pudo ser Actualizado!";
+		}
+	}
 	echo json_encode($datos);
 }
-if (!isset($_REQUEST['process'])){
+if (!isset($_REQUEST['process'])) {
 	inicio();
 }
 
 if (isset($_REQUEST['process'])) {
 	switch ($_REQUEST['process']) {
-	case 'inicio':
+		case 'inicio':
 			inicio();
-		break;
+			break;
 		case 'guardar':
-				guardar();
+			guardar();
 			break;
 	}
 }

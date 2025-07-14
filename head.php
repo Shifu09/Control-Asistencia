@@ -37,9 +37,9 @@ $fila = $resultado->fetch_assoc();
 
         <div class="dropdown">
             <button class="btn btn-light dropdown-toggle mx-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user"></i> Bienvenid@ <?php echo utf8_decode($fila['nombres']); ?> </button>
+                <i class="fas fa-user"></i> Bienvenido <?php echo utf8_decode($fila['nombres']); ?> </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="salir.php"><i class="fas fa-sign-out-alt"></i> Cerrar sesion</a></li>
+                <li><a class="dropdown-item" href="salir.php"><i class="fas fa-sign-out-alt" style="color: red;"></i> Cerrar sesion</a></li>
             </ul>
         </div>
 
