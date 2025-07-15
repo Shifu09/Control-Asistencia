@@ -10,17 +10,16 @@ include("leftmenu.php");
 		<h1 class="h4 mb-4 mt-5">Lista de Empleados</h1>
 		<hr class="bg-dark" style="height:2px; width:100%; border-width:0; color:#343a40; background-color:#343a40">
 	</div>
-	<div class="row">
-		<br>
+	<div class="row" style="background-color:rgb(255, 255, 255); border-radius: 10px; margin: 10px; padding: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
 		<div class="table-responsive mt-5">
-			<table class="table table-striped table-hover" id="user">
-				<thead>
-					<th>No</th>
+			<table class="table table-striped table-hover table-custom" id="user">
+				<thead style="background-color:#153757; color: white;">
 					<th>Código</th>
 					<th>Nombre</th>
-					<th>DUI</th>
+					<th>Apellido</th>
 					<th>Teléfono</th>
 					<th>Cargo</th>
+					<th>Gerencia</th>
 					<th>Acciones</th>
 				</thead>
 				<?php
@@ -39,13 +38,12 @@ include("leftmenu.php");
 						//lo siguiente es para el menu de acciones, de aqui podes borrar todo y solo dejar el de 'ver_llegadas.php'
 						//que es donde se hace el reporte de ese empleado
 						echo '<tr>
-								<td>' . $no . '</td>
 								<td>' . $row['codigo'] . '</td>
-							
 								<td>  <span class="fas fa-user" aria-hidden="true"></span> ' . $row['nombres'] . '</a></td>
-								<td>' . $row['dui'] . '</td>
+								<td>' . $row['apellido'] . '</td>
 								<td>' . $row['telefono'] . '</td>
-								<td>' . $row['puesto'] . '</td>';
+								<td>' . $row['puesto'] . '</td>
+								<td>' . $row['gerencia'] . '</td>';
 						$menu1 = '<td>
 								<div class="dropdown">
 								<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -107,6 +105,7 @@ include("leftmenu.php");
 		$('#user').DataTable({
 			"paging": true,
 			responsive: true,
+			lengthMenu: [10, 20, 50, 100],
 			language: {
 				"sProcessing": "Procesando...",
 				"sLengthMenu": "Mostrar _MENU_ registros",

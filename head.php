@@ -25,19 +25,21 @@ $fila = $resultado->fetch_assoc();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/aguamerca_logo.png">
     <title>Admin</title>
 </head>
 
 <body style="background-color: #e4efe7;">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between">
+    <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
         <div class="d-flex bd-highlight mx-2">
 
         </div>
 
         <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle mx-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user"></i> Bienvenido <?php echo utf8_decode($fila['nombres']); ?> </button>
+            <button class="btn btn-light dropdown-toggle mx-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);">
+                <img src="img/aguamerca_logo.png" alt="Logo" class="nav-logo">Bienvenido <?php echo utf8_decode($fila['nombres']); ?> </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="salir.php"><i class="fas fa-sign-out-alt" style="color: red;"></i> Cerrar sesion</a></li>
             </ul>
