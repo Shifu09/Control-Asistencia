@@ -14,7 +14,7 @@ include("leftmenu.php");
 		<div class="table-responsive mt-5">
 			<table class="table table-striped table-hover table-custom" id="user">
 				<thead style="background-color:#153757; color: white;">
-					<th>Código</th>
+					<th>Cédula</th>
 					<th>Nombre</th>
 					<th>Apellido</th>
 					<th>Teléfono</th>
@@ -95,7 +95,7 @@ include("leftmenu.php");
 	</div>
 </div>
 
-<?php include_once("foot.php"); ?>
+<?php include("foot.php"); ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>

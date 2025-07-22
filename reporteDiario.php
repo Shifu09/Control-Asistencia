@@ -23,7 +23,6 @@ $row0 = mysqli_fetch_assoc($res0);
           <th>No</th>
           <th>Nombre</th>
           <th>Hora de llegada</th>
-          <th>Dentro de la empresa</th>
           <th>Hora Salida</th>
           <th>Observacion</th>
         </tr>
@@ -52,7 +51,6 @@ $row0 = mysqli_fetch_assoc($res0);
 								<td>' . $no . '</td>
 								<td>' . $nom['nombres'] . '</td>
 								<td>' . $row['hora_e'] . '</td>
-								<td>' . $activo . '</td>
 								<td>' . $row['hora_s'] . '</td>
                 <td>';
                 //obtener observaciones del dia

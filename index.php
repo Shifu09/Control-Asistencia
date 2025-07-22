@@ -59,17 +59,18 @@ date_default_timezone_set('America/Caracas');
                     </div>
                     <div class="col-12 d-flex mb-2">
                         <div class="form-check me-4">
-                            <input class="form-check-input" type="radio" name="entrada" id="entrada" value="E" <?php echo $checked2 ?>>
+                            <input class="form-check-input" type="checkbox" name="entrada" id="entrada" value="E" <?php echo $checked ?>>
                             <label class="form-check-label" for="entrada">
                                 Entrada
                             </label>
                         </div>
                         <div class="form-check me-4">
-                            <input class="form-check-input" type="radio" id="salida" name="salida" value="S" <?php echo $checked ?> readonly>
+                            <input class="form-check-input" type="checkbox" id="salida" name="salida" value="S" <?php echo $checked2 ?>>
                             <label class="form-check-label" for="salida">
                                 Salida
                             </label>
                         </div>
+
                     </div>
                     <div class="col-12">
                         <div class="input-group mt-2">
