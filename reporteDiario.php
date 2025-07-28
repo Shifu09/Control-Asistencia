@@ -64,6 +64,10 @@ $row0 = mysqli_fetch_assoc($res0);
                   } else {
                     echo "<span class='text-danger'>No marco Entrada</span>";
                   }
+                  // Mostrar observación manual si existe
+                  if (!empty($row['observacion'])) {
+                    echo "<div class='text-primary'><strong>Obs. usuario:</strong> " . htmlspecialchars($row['observacion']) . "</div>";
+                  }
                   // Salida: viernes usa hora_s_vie, otros días hora_s_sem
                   if ($row['hora_s']) {
                     $dia_semana = date('w', strtotime($row['fecha']));

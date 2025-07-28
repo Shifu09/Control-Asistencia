@@ -22,9 +22,9 @@ if (!empty($_POST)) {
         if ($filas > 0) {
             $fila = $resultado->fetch_assoc();
             if ($fila["estado"] != 0) {
-                echo "<script type='text/javascript'>alert('Código ya existe');</script>";
+                echo "<script type='text/javascript'>alert('Cédula ya existe');</script>";
             } else {
-                echo "<script type='text/javascript'>alert('Intente con otro código');</script>";
+                echo "<script type='text/javascript'>alert('Intente con otra cédula');</script>";
             }
         } else {
             //si no existe el codigo se hace la insercion
@@ -35,11 +35,11 @@ if (!empty($_POST)) {
             $consulta = "UPDATE empleados SET disponible='0' WHERE codigo='$codigo'";
             $con->query($consulta);
             //el mensaje para el usuario
-            echo "<script type='text/javascript'>alert('$mensaje');</script>";
+            echo "<script type='text/javascript'>alert('$mensaje'); </script>";
         }
     } else {
         //si ya existe el codigo
-        $mensaje = 'No puedes volver a registrarte';
-        echo "<script type='text/javascript'>alert('$mensaje');</script>";
+        $mensaje = 'No puedes volver a registar esa cedula';
+        echo "<script type='text/javascript'>alert('$mensaje'); window.location.href = 'reporteEmp.php';</script>";
     }
 }

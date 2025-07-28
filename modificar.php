@@ -7,6 +7,7 @@ if (!empty($_POST)) {
     $codigo = mysqli_real_escape_string($con, $_POST["codigo"]);
     $nombres = mysqli_real_escape_string($con, $_POST["nombres"]);
     $telefono = mysqli_real_escape_string($con, $_POST["telefono"]);
+    $gerencia = mysqli_real_escape_string($con, $_POST["gerencia"]);
     $puesto = mysqli_real_escape_string($con, $_POST["puesto"]);
     $tipo = mysqli_real_escape_string($con, $_POST["tipo"]);
     $encriptar = mysqli_real_escape_string($con, $_POST["pass"]);
@@ -21,16 +22,16 @@ if (!empty($_POST)) {
             $fila = $resultado->fetch_assoc();
             if ($fila["estado"] != 0) {
                 //si existe se hace el update
-                $consulta = "UPDATE empleados SET nombres='$nombres', telefono='$telefono', puesto='$puesto',tipo='$tipo',contrasenia='$pass' WHERE codigo='$codigo'";
+                $consulta = "UPDATE empleados SET nombres='$nombres', telefono='$telefono', gerencia='$gerencia',puesto='$puesto',tipo='$tipo',contrasenia='$pass' WHERE codigo='$codigo'";
                 $con->query($consulta);
-                echo "<script type='text/javascript'>alert('Modificado con exito!');</script>";
+                echo "<script type='text/javascript'>alert('Modificado con exito!'); window.location.href = 'reporteEmp.php';</script>";
             } else {
                 //si no encuentra el empleado
-                echo "<script type='text/javascript'>alert('Código no encontrado.');</script>";
+                echo "<script type='text/javascript'>alert('Cédula no encontrada.');</script>";
             }
         } else {
             //si no encuentra el empleado
-            echo "<script type='text/javascript'>alert('Código no encontrado.');</script>";
+            echo "<script type='text/javascript'>alert('Cédula no encontrada.');</script>";
         }
     } else {
         //si hay algun problema

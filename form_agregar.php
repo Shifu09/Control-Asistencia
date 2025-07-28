@@ -18,7 +18,7 @@ include("agregar.php");
         <form class="row g-3" action="" method="post">
           <div class="row">
             <div class="col-md-6 mb-3">
-              <input type="text" name="codigo" class="form-control" placeholder="Cédula del empleado" required>
+              <input type="text" name="codigo" class="form-control" placeholder="Cédula del empleado" required maxlength="8">
             </div>
             <div class="col-md-6 mb-3">
               <input type="text" name="nombres" class="form-control" placeholder="Nombre del empleado" required>
