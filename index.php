@@ -17,6 +17,7 @@ date_default_timezone_set('America/Caracas');
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/aguamerca_logo.png">
     <title>Asistencia</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body style="background-color: #e4efe7;">

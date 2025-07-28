@@ -9,7 +9,7 @@ $( "#horarios" ).submit(function( event ) {
     data: stringDatos,
     dataType: 'json',
     success: function(datos) {
-      alert(datos.mensaje);
+      Swal.fire({icon: 'info', title: 'Información', text: datos.mensaje});
     }
   });
 });

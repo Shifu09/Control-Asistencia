@@ -22,9 +22,9 @@ if (!empty($_POST)) {
         if ($filas > 0) {
             $fila = $resultado->fetch_assoc();
             if ($fila["estado"] != 0) {
-                echo "<script type='text/javascript'>alert('Cédula ya existe');</script>";
+                echo "<script type='text/javascript'>Swal.fire({icon: 'error', title: 'Cédula ya existe', text: 'La cédula ingresada ya está registrado.'});</script>";
             } else {
-                echo "<script type='text/javascript'>alert('Intente con otra cédula');</script>";
+                echo "<script type='text/javascript'>Swal.fire({icon: 'warning', title: 'Cédula inactiva', text: 'Intente con otra cédula.'});</script>";
             }
         } else {
             //si no existe el codigo se hace la insercion
@@ -35,11 +35,11 @@ if (!empty($_POST)) {
             $consulta = "UPDATE empleados SET disponible='0' WHERE codigo='$codigo'";
             $con->query($consulta);
             //el mensaje para el usuario
-            echo "<script type='text/javascript'>alert('$mensaje'); </script>";
+            echo "<script type='text/javascript'>Swal.fire({icon: 'success', title: '¡Éxito!', text: '$mensaje'});</script>";
         }
     } else {
         //si ya existe el codigo
-        $mensaje = 'No puedes volver a registar esa cedula';
-        echo "<script type='text/javascript'>alert('$mensaje'); window.location.href = 'reporteEmp.php';</script>";
+        $mensaje = 'No puedes volver a registar esa cédula';
+        echo "<script type='text/javascript'>Swal.fire({icon: 'error', title: 'Error!', text: '$mensaje'});</script>";
     }
 }

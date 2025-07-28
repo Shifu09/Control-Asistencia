@@ -32,7 +32,7 @@ $(document).on('click', '#buscar', function(e) {
     });
   } // aqui validamos
   else{
-    alert("fecha inicio debe ser menor o igual que fecha fin")
+    Swal.fire({icon: 'warning', title: 'Fechas incorrectas', text: 'La fecha de inicio debe ser menor o igual que la fecha de fin.'})
     $("#mostrar_datoss").html('<tr><td colspan="8">No hay datos.</td></tr>');
   }
 });

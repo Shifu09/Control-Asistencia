@@ -24,18 +24,18 @@ if (!empty($_POST)) {
                 //si existe se hace el update
                 $consulta = "UPDATE empleados SET nombres='$nombres', telefono='$telefono', gerencia='$gerencia',puesto='$puesto',tipo='$tipo',contrasenia='$pass' WHERE codigo='$codigo'";
                 $con->query($consulta);
-                echo "<script type='text/javascript'>alert('Modificado con exito!'); window.location.href = 'reporteEmp.php';</script>";
+                echo "<script type='text/javascript'>Swal.fire({icon: 'success', title: '¡Éxito!', text: 'Modificado con exito!'}); window.location.href = 'reporteEmp.php';</script>";
             } else {
                 //si no encuentra el empleado
-                echo "<script type='text/javascript'>alert('Cédula no encontrada.');</script>";
+                echo "<script type='text/javascript'>Swal.fire({icon: 'error', title: 'Error!', text: 'Cédula no encontrada.'});</script>";
             }
         } else {
             //si no encuentra el empleado
-            echo "<script type='text/javascript'>alert('Cédula no encontrada.');</script>";
+            echo "<script type='text/javascript'>Swal.fire({icon: 'error', title: 'Error!', text: 'Cédula no encontrada.'});</script>";
         }
     } else {
         //si hay algun problema
         $mensaje = 'No puedes modificar tus datos.';
-        echo "<script type='text/javascript'>alert('$mensaje');</script>";
+        echo "<script type='text/javascript'>Swal.fire({icon: 'error', title: 'Error', text: '$mensaje'});</script>";
     }
 }

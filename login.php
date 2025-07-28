@@ -27,7 +27,7 @@ if(!empty($_POST)) {
         }
     }else{
         $mensaje = 'usuario o contrasenia incoreccto';
-        echo "<script type='text/javascript'>alert('$mensaje');</script>";
+        echo "<script type='text/javascript'>Swal.fire({icon: 'error', title: 'Error de acceso', text: '$mensaje'});</script>";
         // si es incorrecto algun campo
     }
 }
