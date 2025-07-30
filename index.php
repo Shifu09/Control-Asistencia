@@ -53,10 +53,10 @@ date_default_timezone_set('America/Caracas');
                 $checked = '';
             }
             ?>
-            <form class="mt-4 w-100 px-4" action="">
+            <form class="mt-4 w-100 px-4" action="" autocomplete="off">
                 <div class="row w-100">
                     <div class="col-12 my-3">
-                        <p style="font-size:20px; font-weight:bold; color:#325288;">INGRESE LA CEDULA DEL EMPLEADO Y PULSE LA TECLA ENTER</p>
+                        <p style="font-size:20px; font-weight:bold; color:#325288;">INGRESE SU CEDULA Y PULSE LA TECLA ENTER EN EL PRIMER CAMPO</p>
                     </div>
                     <div class="col-12 d-flex mb-2">
                         <div class="form-check me-4">
@@ -76,9 +76,17 @@ date_default_timezone_set('America/Caracas');
                     <div class="col-12">
                         <div class="input-group mt-2">
                             <span class="input-group-text text-light" id="basic-addon1" style="background-color:#325288;">Cedula del Empleado:</span>
-                            <input type="text" class="form-control" name="codigo" id="codigo" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" name="codigo" id="codigo" aria-label="Username" aria-describedby="basic-addon1" autofocus>
                         </div>
                     </div>
+
+                    <div class="col-12">
+                        <div class="input-group mt-2">
+                            <span class="input-group-text text-light" id="basic-addon1" style="background-color:#325288;">Observaciones:</span>
+                            <input type="text" class="form-control" name="observaciones" id="observaciones" aria-label="Observaciones" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+
                     <div class="col-12">
                         <div class="alert alert-primary mt-3 mensajes" role="alert"></div>
                     </div>

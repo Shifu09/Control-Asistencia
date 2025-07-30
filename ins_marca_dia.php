@@ -6,6 +6,7 @@ $codigo = $_POST['codigo']; //empleado
 $marca = $_POST['marca']; //puede ser entrada o salida E ó S
 $fecha = date('Y-m-d');
 $hora = date('h:i:s A'); // 24h para comparar
+$observaciones = $_POST['observaciones'];
 $hnull = NULL;
 
 // Obtener el día de la semana y los horarios
@@ -46,13 +47,13 @@ if (mysqli_num_rows($sql0) > 0) {
 		$datos['hora_s'] = $row['hora_s'];
 		//para marcar entrada
 		if ($marca == 'E') {
-			$update = mysqli_query($con, "UPDATE marcas SET hora_e='$hora' WHERE codigo='$codigo' AND fecha='$fecha'") or die(mysqli_error());
+			$update = mysqli_query($con, "UPDATE marcas SET hora_e='$hora', observaciones='$observaciones' WHERE codigo='$codigo' AND fecha='$fecha'") or die(mysqli_error());
 			$update1 = mysqli_query($con, "UPDATE `empleados` SET `disponible` = '1' WHERE `codigo` = '$codigo'");
 			$tipo_marc = " MARCA ENTRADA A LAS ";
 		}
 		//para marcar salida
 		if ($marca == 'S') {
-			$update = mysqli_query($con, "UPDATE marcas SET hora_s='$hora' WHERE codigo='$codigo' AND fecha='$fecha'") or die(mysqli_error());
+			$update = mysqli_query($con, "UPDATE marcas SET hora_s='$hora',observaciones='$observaciones' WHERE codigo='$codigo' AND fecha='$fecha'") or die(mysqli_error());
 			$update1 = mysqli_query($con, "UPDATE `empleados` SET `disponible` = '0' WHERE `codigo` = '$codigo'");
 			$tipo_marc = " MARCA SALIDA A LAS ";
 		}
@@ -63,13 +64,13 @@ if (mysqli_num_rows($sql0) > 0) {
 	} else {
 		//si no hay registro de marcs en la fecha actual, inserta
 		if ($marca == 'E') {
-			$q_ins = "INSERT INTO marcas(id,codigo, fecha, hora_e) ";
+			$q_ins = "INSERT INTO marcas(id,codigo, fecha, hora_e, observaciones) ";
 			$tipo_marc = " MARCA ENTRADA A LAS ";
 		} else {
-			$q_ins = "INSERT INTO marcas(id,codigo, fecha, hora_s) ";
+			$q_ins = "INSERT INTO marcas(id,codigo, fecha, hora_s, observaciones) ";
 			$tipo_marc = " MARCA SALIDA A LAS ";
 		}
-		$q_ins .= " VALUES(DEFAULT,'$codigo','$fecha', '$hora')";
+		$q_ins .= " VALUES(DEFAULT,'$codigo','$fecha', '$hora', '$observaciones')";
 		$insert = mysqli_query($con, $q_ins) or die(mysqli_error());
 
 		if ($insert) {

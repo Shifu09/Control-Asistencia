@@ -27,6 +27,7 @@ $('#codigo').keypress(function(event){
 function consultar(){
   var marca='E';
   var codigo=$('#codigo').val();
+  var observaciones=$('#observaciones').val();
   if( $("#entrada").is(':checked')) {
      marca=$("#entrada").val()
   }
@@ -37,12 +38,13 @@ function consultar(){
     $.ajax({
       type: 'POST',
       url: 'ins_marca_dia.php',
-      data: {codigo:codigo,marca:marca},
+      data: {codigo:codigo,marca:marca,observaciones:observaciones},
       dataType: 'json',
       //luego solo se limpia los campos
       success: function(data) {
             $( "#codigo" ).focus();
             $( "#codigo" ).val("");
+            $( "#observaciones" ).val("");
           $( ".mensajes" ).text(data.mensaje);
       }
     });
