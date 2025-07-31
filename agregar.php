@@ -22,14 +22,14 @@ if (!empty($_POST)) {
         if ($filas > 0) {
             $fila = $resultado->fetch_assoc();
             if ($fila["estado"] != 0) {
-                echo "<script type='text/javascript'>Swal.fire({icon: 'error', title: 'Cédula ya existe', text: 'La cédula ingresada ya está registrado.'});</script>";
+                echo "<script type='text/javascript'>Swal.fire({icon: 'error', title: 'Cédula ya existe', text: 'La cédula ingresada ya está registrada.'});</script>";
             } else {
                 echo "<script type='text/javascript'>Swal.fire({icon: 'warning', title: 'Cédula inactiva', text: 'Intente con otra cédula.'});</script>";
             }
         } else {
             //si no existe el codigo se hace la insercion
             $consulta = "INSERT INTO empleados(codigo, nombres, apellido, telefono, gerencia, estado,tipo,contrasenia,disponible) VALUES('$codigo','$nombres', '$apellido', '$telefono', '$gerencia', '1', '$tipo', '$pass', '1')";
-            $mensaje = 'Empleado agregado con exito!';
+            $mensaje = 'Empleado registrado con exito!';
             $con->query($consulta);
             //esta consulta es para solucionar el bug de que al marcar entrada por primera vez no lo cambiaba a activo, no se que pasaba, solucion cutre, pero funciona
             $consulta = "UPDATE empleados SET disponible='0' WHERE codigo='$codigo'";

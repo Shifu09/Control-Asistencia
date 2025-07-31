@@ -47,10 +47,10 @@ function imprimirActivo($numero, $codigo, $nombre, $cargo)
         <div class="table-responsive mt-5">
             <table class="table table-striped table-hover">
                 <tr>
-                    <th>No</th>
-                    <th>Código</th>
+                    <th>ID</th>
+                    <th>Cedula</th>
                     <th>Nombre</th>
-                    <th>Cargo</th>
+                    <th>Gerencia</th>
                 </tr>
                 <?php iterarActivos($activos); ?>
             </table>

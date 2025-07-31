@@ -24,7 +24,8 @@ $row0 = mysqli_fetch_assoc($res0);
           <th>Nombre</th>
           <th>Hora de llegada</th>
           <th>Hora Salida</th>
-          <th>Observacion</th>
+          <th>Observaciones</th>
+          <th>Observacion de marcado</th>
         </tr>
         <?php
 
@@ -52,6 +53,7 @@ $row0 = mysqli_fetch_assoc($res0);
 								<td>' . $nom['nombres'] . '</td>
 								<td>' . $row['hora_e'] . '</td>
 								<td>' . $row['hora_s'] . '</td>
+                <td>' . $row['observaciones'] . '</td>
                 <td>';
                 //obtener observaciones del dia
                 if (date("w") > 0 && date("w") < 6) { // Lunes a Viernes

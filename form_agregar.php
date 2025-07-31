@@ -51,7 +51,7 @@ include("agregar.php");
             </div>
             <div class="col-md-6 mb-3">
               <input type="submit" name="add" class="btn btn-primary" value="Guardar datos">
-              <a href="admin_ventana.php" class="btn btn-danger">Cancelar</a>
+              <a href="reporteEmp.php" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
       </div>
