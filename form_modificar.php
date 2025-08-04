@@ -39,31 +39,31 @@ function imprimirTipo($tipo)
         <form class="row g-3" action="" method="post">
           <div class="row">
             <div class="col-md-6 mb-3">
-              <input type="text" name="codigo" class="form-control" placeholder="Cédula del empleado" value="<?= $res['codigo'] ?>" required maxlength="8">
+              <input type="text" name="codigo" id="codigo" class="form-control" placeholder="Cédula del empleado" value="<?= $res['codigo'] ?>" required maxlength="8">
             </div>
             <div class="col-md-6 mb-3">
-              <input type="text" name="nombres" class="form-control" placeholder="Nombre del empleado" value="<?= $res['nombres'] ?>" required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <input type="text" name="apellido" class="form-control" placeholder="Apellido del empleado" value="<?= isset($res['apellido']) ? $res['apellido'] : '' ?>" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <input type="text" name="telefono" class="form-control" placeholder="Teléfono" value="<?= $res['telefono'] ?>" required>
+              <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Nombre del empleado" value="<?= $res['nombres'] ?>" required>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 mb-3">
-              <input type="text" name="puesto" class="form-control" placeholder="Cargo" value="<?= $res['puesto'] ?>" required>
+              <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido del empleado" value="<?= isset($res['apellido']) ? $res['apellido'] : '' ?>" required>
             </div>
             <div class="col-md-6 mb-3">
-              <input type="text" name="gerencia" class="form-control" placeholder="Gerencia a la que pertenece" value="<?= isset($res['gerencia']) ? $res['gerencia'] : '' ?>" required>
+              <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Teléfono" value="<?= $res['telefono'] ?>" required>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 mb-3">
-              <select name="tipo" class="form-select">
+              <input type="text" name="puesto" id="puesto" class="form-control" placeholder="Cargo" value="<?= $res['puesto'] ?>" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" name="gerencia" id="gerencia" class="form-control" placeholder="Gerencia a la que pertenece" value="<?= isset($res['gerencia']) ? $res['gerencia'] : '' ?>" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <select name="tipo" id="tipo" class="form-select">
                 <option value="" disabled>Seleccione tipo de usuario</option>
                 <option value="0" <?= $res['tipo'] == 0 ? 'selected' : '' ?>>Empleado</option>
                 <option value="1" <?= $res['tipo'] == 1 ? 'selected' : '' ?>>Administrador</option>

@@ -125,7 +125,7 @@ date_default_timezone_set('America/Caracas');
             format: 'dd-mm-yyyy',
         })
     </script>
-    <script src="js/validacion.js"></script>
+    <script src="js/validaciones.js"></script>
 </body>
 
 </html>

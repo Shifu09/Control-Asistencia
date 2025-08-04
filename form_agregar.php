@@ -18,26 +18,27 @@ include("agregar.php");
         <form class="row g-3" action="" method="post">
           <div class="row">
             <div class="col-md-6 mb-3">
-              <input type="text" name="codigo" class="form-control" placeholder="Cédula del empleado" required maxlength="8">
+              <input type="text" name="codigo" id="codigo" class="form-control" placeholder="Cédula del empleado" required maxlength="8">
             </div>
             <div class="col-md-6 mb-3">
-              <input type="text" name="nombres" class="form-control" placeholder="Nombre del empleado" required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <input type="text" name="apellido" class="form-control" placeholder="Apellido del empleado" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <input type="text" name="telefono" class="form-control" placeholder="Teléfono" required>
+              <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Nombre del empleado" required>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 mb-3">
-              <input type="text" name="puesto" class="form-control" placeholder="Cargo" required>
+              <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido del empleado" required>
             </div>
             <div class="col-md-6 mb-3">
-              <input type="text" name="gerencia" class="form-control" placeholder="Gerencia a la que pertenece" required>
+              <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Teléfono" required>
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="col-md-6 mb-3">
+              <input type="text" name="puesto" id="puesto" class="form-control" placeholder="Cargo" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" name="gerencia" id="gerencia" class="form-control" placeholder="Gerencia a la que pertenece" required>
             </div>
             <div class="col-md-6 mb-3">
               <select name="tipo" class="form-select">
@@ -78,3 +79,4 @@ include("agregar.php");
     });
   });
 </script>
+<script src="js/validaciones.js"></script>

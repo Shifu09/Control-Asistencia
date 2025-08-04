@@ -6,6 +6,7 @@ include("conexion.php");
 //aqui agarramos por post todos los datos
 if (!empty($_POST)) {
     $codigo = mysqli_real_escape_string($con, $_POST["codigo"]);
+    $apellido = mysqli_real_escape_string($con, $_POST["apellido"]);
     $nombres = mysqli_real_escape_string($con, $_POST["nombres"]);
     $telefono = mysqli_real_escape_string($con, $_POST["telefono"]);
     $gerencia = mysqli_real_escape_string($con, $_POST["gerencia"]);
@@ -35,7 +36,7 @@ if (!empty($_POST)) {
             $consulta = "UPDATE empleados SET disponible='0' WHERE codigo='$codigo'";
             $con->query($consulta);
             //el mensaje para el usuario
-            echo "<script type='text/javascript'>Swal.fire({icon: 'success', title: '¡Éxito!', text: '$mensaje'});</script>";
+            echo "<script type='text/javascript'>Swal.fire({icon: 'success', title: '¡Éxito!', text: '$mensaje',});</script>";
         }
     } else {
         //si ya existe el codigo
