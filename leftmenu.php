@@ -9,7 +9,6 @@
   <div id="nav-content">
     <a href="reporteEmp.php" class="nav-button"><i class="fas fa-users"></i><span>Lista de Empleados</span></a>
     <a href="form_agregar.php" class="nav-button"><i class="fas fa-user-plus"></i><span>Agregar Datos</span></a>
-    <a href="asistencia.php" class="nav-button"><i class="fas fa-user-check"></i><span>Empleados Activos</span></a>
     <a href="reporteDiario.php" class="nav-button"><i class="fas fa-calendar-day"></i><span>Reporte diario</span></a>
     <a href="reporteAnual.php" class="nav-button"><i class="fas fa-calendar-alt"></i><span>Reporte por fecha</span></a>
     <a href="config_horario.php" class="nav-button"><i class="fas fa-clock"></i><span>Configurar Horario</span></a>

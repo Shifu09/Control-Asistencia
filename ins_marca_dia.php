@@ -53,7 +53,8 @@ if (mysqli_num_rows($sql0) > 0) {
 		}
 		//para marcar salida
 		if ($marca == 'S') {
-			$update = mysqli_query($con, "UPDATE marcas SET hora_s='$hora',observaciones='$observaciones' WHERE codigo='$codigo' AND fecha='$fecha'") or die(mysqli_error());
+			$nueva_obs = ", " . $observaciones;
+			$update = mysqli_query($con, "UPDATE marcas SET hora_s='$hora', observaciones=CONCAT(IFNULL(observaciones,''), IF(observaciones IS NULL OR observaciones = '', '', '\n'), '$nueva_obs') WHERE codigo='$codigo' AND fecha='$fecha'") or die(mysqli_error());
 			$update1 = mysqli_query($con, "UPDATE `empleados` SET `disponible` = '0' WHERE `codigo` = '$codigo'");
 			$tipo_marc = " MARCA SALIDA A LAS ";
 		}
