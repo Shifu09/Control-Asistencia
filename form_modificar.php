@@ -74,15 +74,25 @@ function imprimirTipo($tipo)
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <input type="submit" name="add" class="btn btn-primary" value="Guardar datos">
-            <a href="reporteEmp.php" class="btn btn-danger">Cancelar</a>
+            <input type="submit" name="add" class="btn btn-primary" value="Guardar datos" id="button">
+            <a href="reporteEmp.php" class="btn btn-danger" id="button">Cancelar</a>
+            <a href="reporteEmp.php" class="btn btn-success" id="button">Regresar</a>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+<style>
+  #button {
+    box-shadow: 0 7px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+  }
 
+  #button:hover {
+    cursor: pointer;
+  }
+</style>
 <?php include_once("foot.php"); ?>
 <script>
   $(document).ready(function() {
@@ -96,6 +106,9 @@ function imprimirTipo($tipo)
         $("#contra").hide();
         $("#contra").removeAttr("required");
       }
+    });
+    $("#regresar").click(function() {
+      window.location.href = "reporteEmp.php";
     });
   });
 </script>

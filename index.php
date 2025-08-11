@@ -76,7 +76,7 @@ date_default_timezone_set('America/Caracas');
                     <div class="col-12">
                         <div class="input-group mt-2">
                             <span class="input-group-text text-light" id="basic-addon1" style="background-color:#325288;">Cedula del Empleado:</span>
-                            <input type="text" class="form-control" name="codigo" id="codigo" aria-label="Username" aria-describedby="basic-addon1" autofocus>
+                            <input type="text" class="form-control" name="codigo" id="codigo" aria-label="Username" aria-describedby="basic-addon1" autofocus maxlength="8">
                         </div>
                     </div>
 
