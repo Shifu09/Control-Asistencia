@@ -94,6 +94,8 @@ function imprimirTipo($tipo)
   }
 </style>
 <?php include_once("foot.php"); ?>
+<script src="js/validaciones.js"></script>
+
 <script>
   $(document).ready(function() {
     $("#contra").hide();
