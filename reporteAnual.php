@@ -47,8 +47,60 @@ if (mysqli_num_rows($sql) > 0) {
 	</div>
 	<div class='mostrar_datos'>
 		<h5>Lista de LLegadas por Fechas</h5>
-		<div class="table-responsive">
-			<table class="table table-striped table-hover">
+		<style>
+			.custom-table-container {
+				background: #fff;
+				border-radius: 10px;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+				padding: 24px 18px 18px 18px;
+				margin-bottom: 40px;
+			}
+
+			.custom-table th {
+				background: #132795;
+				color: #fff;
+				font-weight: bold;
+				position: sticky;
+				top: 0;
+				z-index: 2;
+				vertical-align: middle;
+			}
+
+			.custom-table td,
+			.custom-table th {
+				vertical-align: middle !important;
+				padding: 0.5rem 0.75rem !important;
+				font-size: 0.97rem;
+			}
+
+			.custom-table tr {
+				border-bottom: 1px solid #e0e0e0;
+			}
+
+			.custom-table tbody tr:hover {
+				background: #f5f7fa;
+				transition: background 0.2s;
+			}
+
+			.custom-table thead th {
+				border-top-left-radius: 8px;
+				border-top-right-radius: 8px;
+			}
+
+			@media (max-width: 768px) {
+				.custom-table-container {
+					padding: 10px 2px;
+				}
+
+				.custom-table td,
+				.custom-table th {
+					font-size: 0.92rem;
+					padding: 0.35rem 0.5rem !important;
+				}
+			}
+		</style>
+		<div class="table-responsive custom-table-container">
+			<table class="table table-striped table-hover custom-table">
 				<!--ya aqui mostramos todos los datos dentro del rango de fecha-->
 				<thead>
 					<tr>

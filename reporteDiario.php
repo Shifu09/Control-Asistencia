@@ -11,43 +11,97 @@ $row0 = mysqli_fetch_assoc($res0);
 ?>
 
 
+<style>
+  .custom-table-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    padding: 24px 18px 18px 18px;
+    margin-bottom: 40px;
+  }
+
+  .custom-table th {
+    background: #132795;
+    color: #fff;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    vertical-align: middle;
+  }
+
+  .custom-table td,
+  .custom-table th {
+    vertical-align: middle !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.97rem;
+  }
+
+  .custom-table tr {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .custom-table tbody tr:hover {
+    background: #f5f7fa;
+    transition: background 0.2s;
+  }
+
+  .custom-table thead th {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .custom-table-container {
+      padding: 10px 2px;
+    }
+
+    .custom-table td,
+    .custom-table th {
+      font-size: 0.92rem;
+      padding: 0.35rem 0.5rem !important;
+    }
+  }
+</style>
+
 <div class="container content-wrapper">
   <div>
     <h1 class="h4 mb-4 mt-5">Reporte diario</h1>
-    <hr class="bg-dark" style="height:2px; width:100%; border-width:0; color:#343a40; background-color:#343a40">
   </div>
   <div class="row">
-    <div class="table-responsive mt-5">
-      <table class="table table-striped table-hover">
-        <tr>
-          <th>No</th>
-          <th>Nombre</th>
-          <th>Hora de llegada</th>
-          <th>Hora Salida</th>
-          <th>Observaciones</th>
-          <th>Observacion de marcado</th>
-        </tr>
-        <?php
+    <div class="table-responsive mt-5 custom-table-container">
+      <table class="table table-striped table-hover custom-table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nombre</th>
+            <th>Hora de llegada</th>
+            <th>Hora Salida</th>
+            <th>Observaciones Generales</th>
+            <th>Observaciones de marcado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
 
-        $filter = 1;
-        if ($filter) {
-          //aqui es para mostrar a los empleados
-          $sql = mysqli_query($con, "SELECT * FROM marcas WHERE fecha = CURDATE()");
-        }
+          $filter = 1;
+          if ($filter) {
+            //aqui es para mostrar a los empleados
+            $sql = mysqli_query($con, "SELECT * FROM marcas WHERE fecha = CURDATE()");
+          }
 
-        if (mysqli_num_rows($sql) == 0) {
-          //cuando no hay datos
-          echo '<tr><td colspan="8">No hay datos.</td></tr>';
-        } else {
-          $no = 1;
-          while ($row = mysqli_fetch_assoc($sql)) {
-            // lo siguiente es para el menu de acciones, de aqui se muestra en una tabla
-            // la hora de entrada, salida, si está en la empresa o no, etc.
-            $codigo = $row['codigo'];
-            $query = mysqli_query($con, "SELECT * FROM empleados WHERE codigo='$codigo'");
-            while ($nom = mysqli_fetch_assoc($query)) {
-              if ($nom['estado'] == 1) {
-                $activo = $nom['disponible'] != 0 ? 'Sí' : 'No';
+          if (mysqli_num_rows($sql) == 0) {
+            //cuando no hay datos
+            echo '<tr><td colspan="8">No hay datos.</td></tr>';
+          } else {
+            $no = 1;
+            while ($row = mysqli_fetch_assoc($sql)) {
+              // lo siguiente es para el menu de acciones, de aqui se muestra en una tabla
+              // la hora de entrada, salida, si está en la empresa o no, etc.
+              $codigo = $row['codigo'];
+              $query = mysqli_query($con, "SELECT * FROM empleados WHERE codigo='$codigo'");
+              while ($nom = mysqli_fetch_assoc($query)) {
+
                 echo '<tr>
 								<td>' . $no . '</td>
 								<td>' . $nom['nombres'] . '</td>
@@ -108,8 +162,8 @@ $row0 = mysqli_fetch_assoc($res0);
             }
             $no++;
           }
-        }
-        ?>
+
+          ?>
       </table>
     </div>
   </div>

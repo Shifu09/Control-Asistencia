@@ -17,15 +17,15 @@ function despedir(){
             </div>
         _MSJ;
     }else{
-        //aqui se cambia el estado, porque es para despedir al usuario
-        $delete = mysqli_query($con, "UPDATE `empleados` SET `estado` = '0' WHERE `codigo` = '$nik'");
-        //se borra de la tabla
+        //elimina físicamente al usuario
+        $delete = mysqli_query($con, "DELETE FROM empleados WHERE codigo='$nik'");
         if($delete){
             header('Location: reporteEmp.php?res=1');
         }else{
             header('Location: reporteEmp.php?res=3');
         }
-    }	
+    }
+	
 }
 //lo mandamos a llamar
 if(isset($_GET['aksi']) == 'delete'){
