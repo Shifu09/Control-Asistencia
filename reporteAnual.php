@@ -46,6 +46,7 @@ if (mysqli_num_rows($sql) > 0) {
 		</div>
 	</div>
 	<div class='mostrar_datos'>
+		<br>
 		<h5>Lista de LLegadas por Fechas</h5>
 		<style>
 			.custom-table-container {
@@ -105,13 +106,11 @@ if (mysqli_num_rows($sql) > 0) {
 				<thead>
 					<tr>
 						<th>No</th>
-						<th>Código</th>
+						<th>Cedula</th>
 						<th>Nombre Empleado</th>
-						<!--th>Fecha</th-->
 						<th>Dias trabajados</th>
 						<th>Llegadas tardes</th>
 						<th>Salida Temprana</th>
-						<th>Observacion</th>
 					</tr>
 				</thead>
 				<tbody id='mostrar_datoss'> <!--aqui mete los datos que en reporte-->
