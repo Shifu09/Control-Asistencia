@@ -101,16 +101,18 @@ $row0 = mysqli_fetch_assoc($res0);
               $codigo = $row['codigo'];
               $query = mysqli_query($con, "SELECT * FROM empleados WHERE codigo='$codigo'");
               while ($nom = mysqli_fetch_assoc($query)) {
+                // Día de la semana basado en la fecha de la marca (0=Dom..6=Sáb)
+                $dia_semana = (int) date('w', strtotime($row['fecha']));
 
                 echo '<tr>
 								<td>' . $no . '</td>
-								<td>' . $nom['nombres'] . '</td>
+								<td>' . htmlspecialchars($nom['nombres'], ENT_QUOTES, 'UTF-8') . '</td>
 								<td>' . $row['hora_e'] . '</td>
 								<td>' . $row['hora_s'] . '</td>
-                <td>' . $row['observaciones'] . '</td>
+								<td>' . htmlspecialchars((string)$row['observaciones'], ENT_QUOTES, 'UTF-8') . '</td>
                 <td>';
                 //obtener observaciones del dia
-                if (date("w") > 0 && date("w") < 6) { // Lunes a Viernes
+                if ($dia_semana > 0 && $dia_semana < 6) { // Lunes a Viernes
                   // Entrada (siempre contra hora_e_sem)
                   if ($row['hora_e']) {
                     $hes1 = new DateTime($row['fecha'] . " " . $row0['hora_e_sem']);
@@ -122,24 +124,18 @@ $row0 = mysqli_fetch_assoc($res0);
                   }
                   // Mostrar observación manual si existe
                   if (!empty($row['observacion'])) {
-                    echo "<div class='text-primary'><strong>Obs. usuario:</strong> " . htmlspecialchars($row['observacion']) . "</div>";
+                    echo "<div class='text-primary'><strong>Obs. usuario:</strong> " . htmlspecialchars($row['observacion'], ENT_QUOTES, 'UTF-8') . "</div>";
                   }
-                  // Salida: viernes usa hora_s_vie, otros días hora_s_sem
+                  // Salida: usar hora_s_sem para L-V
                   if ($row['hora_s']) {
-                    $dia_semana = date('w', strtotime($row['fecha']));
-                    if ($dia_semana == 5 && isset($row0['hora_s_vie'])) { // Viernes
-                      $hss1 = new DateTime($row['fecha'] . " " . $row0['hora_s_vie']);
-                    } else { // Lunes a jueves
-                      $hss1 = new DateTime($row['fecha'] . " " . $row0['hora_s_sem']);
-                    }
+                    $hss1 = new DateTime($row['fecha'] . " " . $row0['hora_s_sem']);
                     $hss2 = new DateTime($row['fecha'] . " " . $row['hora_s']);
                     $obs_ss = obtener_observa($hss1, $hss2, "S");
                     echo $obs_ss;
                   } else {
                     echo "<span class='text-danger'>No marco Salida</span>";
                   }
-                }
-                if (date("w") == 6 || date("w") == 0) { //esto ya es para sabado y domingo
+                } else { //esto ya es para sabado y domingo
                   if ($row['hora_e']) {
                     $hefd1 = new DateTime($row['fecha'] . " " . $row0['hora_e_fd']); //config horario
                     $hefd2 = new DateTime($row['fecha'] . " " . $row['hora_e']); //esto es para el finde
@@ -158,9 +154,9 @@ $row0 = mysqli_fetch_assoc($res0);
                   }
                 }
                 echo '</td></tr>';
+                $no++;
               }
             }
-            $no++;
           }
 
           ?>
